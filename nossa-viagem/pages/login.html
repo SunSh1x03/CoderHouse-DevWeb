@@ -53,15 +53,79 @@
     </section>
 
     
-    <form class="form__login">
+    <form class="form__login" aria-labelledby="secao-login">
         <div class="card">
-             Acesse com seu E-mail:<input type="email" class="email__login" placeholder="Digite seu E-mail">
-             Digite sua Senha:<input type="password" class="senha__login" placeholder="Digite sua Senha">
-            <input type="submit" value="Login" class="button__login">
+            <h2 id="secao-login" class="card__titulo">Acesse sua conta</h2>
+            <label class="card__rotulo" for="login-email">Acesse com seu E-mail:</label>
+            <input type="email" id="login-email" class="email__login" placeholder="Digite seu E-mail" autocomplete="username">
+            <label class="card__rotulo" for="login-senha">Digite sua Senha:</label>
+            <input type="password" id="login-senha" class="senha__login" placeholder="Digite sua Senha" autocomplete="current-password">
+            <div class="card__acoes">
+                <input type="submit" value="Login" class="button__login">
+                <button type="button" class="button__bloquear" aria-live="polite">Bloquear edição</button>
+            </div>
+            <p class="status__bloqueio" role="status">Campos liberados para edição.</p>
             <a href="" class="esqueceu__senha" >Esqueçeu a senha?</a>
             <a href="" class="criar__login">Não tem conta?</a>
         </div>
+
+        <section class="card card--seguranca" aria-labelledby="card-seguranca">
+            <h3 id="card-seguranca" class="card__titulo">Checklist de segurança</h3>
+            <p class="card__descricao">Reforçamos alguns cuidados para manter sua conta protegida.</p>
+            <ul class="card__lista">
+                <li>Revise as permissões dos dispositivos conectados periodicamente.</li>
+                <li>Cheque se seu e-mail aparece em algum vazamento conhecido antes de fazer login.</li>
+                <li>Bloqueie a edição dos campos quando precisar se afastar do computador.</li>
+            </ul>
+            <button type="button" class="button__checar" aria-describedby="card-seguranca">Checar vazamento</button>
+            <p class="card__alerta" role="alert" aria-live="assertive"></p>
+        </section>
     </form>
+
+    <script>
+        (function () {
+            const emailInput = document.querySelector('.email__login');
+            const passwordInput = document.querySelector('.senha__login');
+            const bloquearBotao = document.querySelector('.button__bloquear');
+            const statusBloqueio = document.querySelector('.status__bloqueio');
+            const checarBotao = document.querySelector('.button__checar');
+            const alerta = document.querySelector('.card__alerta');
+
+            const leakedDomains = ['example.com', 'test.com', 'demo.com'];
+            let locked = false;
+
+            bloquearBotao.addEventListener('click', () => {
+                locked = !locked;
+                [emailInput, passwordInput].forEach((campo) => {
+                    campo.readOnly = locked;
+                    campo.setAttribute('aria-readonly', locked ? 'true' : 'false');
+                });
+                bloquearBotao.textContent = locked ? 'Desbloquear edição' : 'Bloquear edição';
+                statusBloqueio.textContent = locked ? 'Edição bloqueada. Clique novamente para liberar os campos.' : 'Campos liberados para edição.';
+            });
+
+            checarBotao.addEventListener('click', () => {
+                const email = emailInput.value.trim().toLowerCase();
+
+                if (!email) {
+                    alerta.textContent = 'Informe um e-mail para verificarmos se há registro em vazamentos públicos.';
+                    alerta.classList.add('card__alerta--visivel');
+                    return;
+                }
+
+                const dominio = email.split('@')[1] || '';
+                const possuiVazamento = leakedDomains.includes(dominio);
+
+                if (possuiVazamento) {
+                    alerta.textContent = 'Atenção: encontramos registros públicos de vazamento associados a este domínio. Considere atualizar sua senha.';
+                } else {
+                    alerta.textContent = 'Nenhum vazamento conhecido encontrado para o domínio informado. Continue monitorando regularmente.';
+                }
+
+                alerta.classList.add('card__alerta--visivel');
+            });
+        })();
+    </script>
 
     <footer class="footer__bg">
         <div class="footer container">
