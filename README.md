@@ -15,7 +15,7 @@ A experiência foi extremamente enriquecedora, permitindo exercitar trabalho em 
 ![Prévia do Projeto](nossa-viagem/preview.png)  
 
 > 💡 Adicionei também uma versão revisada do mesmo site utilizando **IA**, como forma de comparação e estudo sobre a evolução no processo de desenvolvimento.  
-> O código original foi feito há 3 anos, sem apoio de inteligência artificial, e a atualização mostrará como ferramentas modernas podem acelerar e refinar o resultado.  
+> O código original foi feito há 3 anos, sem apoio de inteligência artificial, e a atualização mostra como ferramentas modernas podem acelerar e refinar o resultado.  
 
 ## 📸 Prévia do Projeto revisado por IA
 
