@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossa Viagem – Pacotes, Passagens e Hospedagem</title>
+  <meta name="description" content="Nossa Viagem: agência com pacotes, passagens, hospedagem, passeios e aluguel de carros. Busque ofertas e descubra destinos populares.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Existing project styles (ajuste os caminhos conforme sua estrutura de pastas) -->
+  <!--
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/footer.css">
+  <link rel="stylesheet" href="../destinos/styles/index.css">
+  -->
+
+  <!-- Minimal accessibility/layout helpers for standalone preview -->
+  <style>
+    :root { --bg:#fff; --fg:#111; --brand:#0a66c2; --muted:#616161; --accent:#0f766e; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: 'Josefin Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; color: var(--fg); background: var(--bg); }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px; background: #000; color: #fff; z-index: 1000; border-radius: 6px;
+    }
+
+    header.header-bg { background: #0f172a; color: #fff; }
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .header .logo img { height: 48px; width: auto; }
+    .header nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    .header nav a { color: #e2e8f0; }
+    .header nav a:focus { outline: 3px solid #fff; outline-offset: 2px; border-radius: 4px; }
+
+    .menu__site { background: #e2e8f0; }
+    .lista__menu { display: flex; gap: 16px; list-style: none; margin: 0; padding: 10px 0; }
+    .lista__menu a { padding: 8px 10px; border-radius: 8px; color: #0f172a; }
+    .lista__menu a[aria-current="page"] { background: #fff; box-shadow: 0 0 0 1px #cbd5e1 inset; }
+
+    main { padding: 24px 0 40px; }
+
+    .pacote__viagem { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 32px; }
+    .titulo__forms { margin: 0 0 16px; font-size: 1.5rem; }
+    .grid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .campo { display: flex; flex-direction: column; gap: 6px; }
+    .campo label { font-weight: 700; font-size: 0.95rem; }
+    .campo input, .campo select { padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; }
+    .button_buscar { margin-top: 12px; padding: 12px 18px; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+    .button_buscar:focus-visible { outline: 3px solid #111; outline-offset: 2px; }
+
+    .title__destinos, .titulo__ofertas h2 { font-size: 1.4rem; margin: 8px 0 16px; }
+    .cidades_procuradas, .pacote__ofertas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; list-style: none; padding: 0; }
+    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+    .card figure { margin: 0; }
+    .card figcaption { padding: 10px 12px; font-weight: 700; }
+
+    footer.footer__bg { background: #0f172a; color: #e2e8f0; }
+    .footer.container { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; padding: 24px 0; }
+    .footer a { color: #cbd5e1; }
+    .linha { border: none; height: 1px; background: #334155; margin: 16px 0; }
+    .footer__loja-aplicativo img,
+    .footer__redes-sociais img,
+    .footer__forma-pagamento img { filter: grayscale(10%); }
+    @media (max-width: 860px) {
+      .footer.container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header-bg">
+    <div class="header container">
+      <a href="./" class="logo">
+        <img src="./assets/img/img_logo-agencia.png" alt="Logomarca Nossa Viagem – ícone de avião" width="200" height="48">
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="header-menu">
+          <li><a href="#" aria-current="page">Minha Viagem</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Ajuda</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="menu__site" aria-label="Categorias do site">
+    <div class="container">
+      <ul class="lista__menu">
+        <li class="opcoes__menu"><a href="./pages/pacotes.html">Pacotes</a></li>
+        <li class="opcoes__menu"><a href="./pages/passagens.html">Passagens</a></li>
+        <li class="opcoes__menu"><a href="./pages/hospedagem.html">Hospedagem</a></li>
+        <li class="opcoes__menu"><a href="./pages/passeios.html">Passeios</a></li>
+        <li class="opcoes__menu"><a href="./pages/aluguel_de_carros.html">Aluguel de Carros</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="conteudo" class="container" tabindex="-1">
+    <form class="pacote__viagem" action="#" method="get" id="buscar-pacote">
+      <h1 class="titulo__forms">Pacote de Viagem</h1>
+      <div class="grid-form">
+        <div class="campo">
+          <label for="origem">Origem</label>
+          <input id="origem" name="origem" type="search" placeholder="Cidade de origem" autocomplete="address-level2" required>
+        </div>
+        <div class="campo">
+          <label for="destino">Destino</label>
+          <input id="destino" name="destino" type="search" placeholder="Cidade destino" required>
+        </div>
+        <div class="campo">
+          <label for="partida">Partida</label>
+          <input id="partida" name="partida" type="date" required>
+        </div>
+        <div class="campo">
+          <label for="volta">Volta</label>
+          <input id="volta" name="volta" type="date">
+        </div>
+        <div class="campo">
+          <label for="quartos">Quartos</label>
+          <input id="quartos" name="quartos" type="number" min="1" value="1" required>
+        </div>
+        <div class="campo">
+          <label for="pessoas">Pessoas</label>
+          <input id="pessoas" name="pessoas" type="number" min="1" value="2" required>
+        </div>
+      </div>
+      <button type="submit" class="button_buscar">Buscar</button>
+    </form>
+
+    <section class="destinos__procurados" aria-labelledby="titulo-destinos">
+      <h2 id="titulo-destinos" class="title__destinos">Destinos mais procurados</h2>
+      <ul class="cidades_procuradas">
+        <li class="card">
+          <figure>
+            <img src="./assets/img/maragogi.jpeg" class="img__cidades" alt="Praias de Maragogi, Alagoas" loading="lazy">
+            <figcaption>Maragogi — AL</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/Salvador.jpg" class="img__cidades" alt="Centro histórico de Salvador, Bahia" loading="lazy">
+            <figcaption>Salvador — BA</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/espirito-santo.jpg" class="img__cidades" alt="Litoral do Espírito Santo" loading="lazy">
+            <figcaption>Espírito Santo — ES</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/saopaulo.jpeg" class="img__cidades" alt="Vista urbana da cidade de São Paulo" loading="lazy">
+            <figcaption>São Paulo — SP</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <section class="titulo__ofertas" aria-labelledby="titulo-ofertas" style="margin-top:24px;">
+      <h2 id="titulo-ofertas">Pacotes em oferta</h2>
+    </section>
+    <section aria-label="Lista de ofertas">
+      <ul class="pacote__ofertas">
+        <li class="card">
+          <figure>
+            <img src="./assets/img/gramado.jpg" class="ofertas" alt="Gramado, Rio Grande do Sul" loading="lazy">
+            <figcaption>Oferta para Gramado</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/aracaju.jpg" class="ofertas" alt="Orla de Aracaju, Sergipe" loading="lazy">
+            <figcaption>Oferta para Aracaju</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/rio_janeiro.jpg" class="ofertas" alt="Rio de Janeiro, Pão de Açúcar ao fundo" loading="lazy">
+            <figcaption>Oferta para Rio de Janeiro</figcaption>
+          </figure>
+        </li>
+        <li class="card">
+          <figure>
+            <img src="./assets/img/natal.jpg" class="ofertas" alt="Dunas e litoral de Natal, Rio Grande do Norte" loading="lazy">
+            <figcaption>Oferta para Natal</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer__bg" role="contentinfo">
+    <div class="footer container">
+      <div>
+        <h3 class="footer__texto-loja-aplicativo">Baixe nosso aplicativo</h3>
+        <div class="footer__loja-aplicativo" aria-label="Lojas de aplicativos">
+          <a href="#"><img src="./assets/img/img_app-store.png" alt="Disponível na App Store" width="130" height="50" loading="lazy"></a>
+          <a href="#"><img src="./assets/img/img_play-store.png" alt="Disponível no Google Play" width="130" height="50" loading="lazy"></a>
+        </div>
+
+        <hr class="linha">
+
+        <h3 class="footer__texto-redes-sociais">Siga nossas redes sociais</h3>
+        <div class="footer__redes-sociais">
+          <a href="#" aria-label="Facebook"><img src="./assets/img/img_facebook.png" width="40" height="40" alt="" loading="lazy"></a>
+          <a href="#" aria-label="Instagram"><img src="./assets/img/img_instagram.png" width="40" height="40" alt="" loading="lazy"></a>
+          <a href="#" aria-label="Twitter"><img src="./assets/img/img_twitter.png" width="40" height="40" alt="" loading="lazy"></a>
+        </div>
+
+        <hr class="linha">
+
+        <h3 class="footer__texto-forma-pagamento">Formas de pagamento</h3>
+        <div class="footer__forma-pagamento" aria-label="Logotipos de bandeiras de cartão">
+          <a href="#"><img src="./assets/img/img_visa.png" alt="Visa" width="40" height="40" loading="lazy"></a>
+          <a href="#"><img src="./assets/img/img_mastercard.png" alt="Mastercard" width="40" height="40" loading="lazy"></a>
+          <a href="#"><img src="./assets/img/img_american-express.png" alt="American Express" width="44" height="44" loading="lazy"></a>
+          <a href="#"><img src="./assets/img/img_dinners.png" alt="Diners Club" width="40" height="40" loading="lazy"></a>
+        </div>
+
+        <hr class="linha">
+      </div>
+
+      <div class="footer__segunda-coluna">
+        <div class="footer__navegacao">
+          <h4 class="footer__navegacao-titulo">Navegar pelo site</h4>
+          <label for="assunto">Assunto</label>
+          <select id="assunto" name="assunto">
+            <option value="Pacotes" selected>Pacotes</option>
+            <option value="Passagens">Passagens</option>
+            <option value="Hospedagens">Hospedagens</option>
+            <option value="Passeios">Passeios</option>
+            <option value="Aluguel de carro">Aluguel de carro</option>
+          </select>
+        </div>
+
+        <hr class="linha">
+
+        <div class="footer__links-atendimento">
+          <div class="footer__links">
+            <h4 class="footer__links-titulo">Sobre a Nossa Viagem</h4>
+            <a class="link" href="#">Quem somos</a>
+          </div>
+          <hr class="linha">
+          <div class="footer__links">
+            <h4 class="footer__links-titulo">Central de atendimento</h4>
+            <div class="atendimento">
+              <a class="link" href="#">Compre sua viagem</a>
+              <a class="link" href="#">SAC</a>
+            </div>
+          </div>
+          <hr class="linha">
+          <div>
+            <h4 class="footer__links-titulo">Regulamentos</h4>
+            <div class="regulamentos">
+              <a class="link" href="#">Termos de uso</a>
+              <a class="link" href="#">Condições gerais</a>
+              <a class="link" href="#">Política de privacidade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
