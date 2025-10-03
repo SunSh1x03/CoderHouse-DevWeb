@@ -4,64 +4,169 @@
    justify-content: right;
 }
 
-.email__login {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-	height: 40px;
-   margin: 10px;
-	
-}
-
+.email__login,
 .senha__login {
    display: flex;
    align-items: center;
    justify-content: center;
    width: 100%;
-	height: 40px;
-   margin: 10px;
+   height: 40px;
+   margin: 10px 0;
+   padding: 8px 12px;
+   border-radius: 8px;
+   border: 1px solid rgba(3, 62, 140, 0.4);
+   font-size: 16px;
 }
 
 .form__login{
    display: flex;
-   align-items: center;
+   flex-wrap: wrap;
+   gap: 32px;
+   align-items: flex-start;
    justify-content: center;
-   text-align: center;
+   text-align: left;
    color: #033E8C;
-   font-size: 25px;
-   height: 70vh;
-   font-weight: 600;
+   font-size: 18px;
+   margin: 40px auto 80px;
 }
 
 .card {
-   text-justify: inherit;
-   border-radius: 10px;
-   padding: 40px;
-   width: 700px;
-   font-weight: 600;
+   background: #ffffff;
+   border-radius: 16px;
+   box-shadow: 0 8px 24px rgba(3, 62, 140, 0.08);
+   padding: 32px;
+   width: min(420px, 90vw);
+   font-weight: 500;
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+}
+
+.card--seguranca {
+   background: #f5f9ff;
+   border: 1px solid rgba(3, 62, 140, 0.1);
+}
+
+.card__titulo {
+   font-size: 24px;
+   font-weight: 700;
+   margin-bottom: 8px;
+}
+
+.card__rotulo {
+   font-size: 14px;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+   color: #021e43;
+}
+
+.card__acoes {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 12px;
+   align-items: center;
+}
+
+.button__login,
+.button__bloquear,
+.button__checar {
+   border: none;
+   border-radius: 8px;
+   padding: 12px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .button__login {
-   width: 100%;
-   height: 40px;
-   margin: 10px;
+   flex: 1 1 160px;
    color: #e4e7eb;
    background:#033E8C;
 }
 
-.esqueceu__senha {
-   text-align: center;
-   font-size: 12px;
+.button__bloquear {
+   background: #f0f4ff;
+   color: #033E8C;
+   border: 1px solid rgba(3, 62, 140, 0.4);
+}
+
+.button__checar {
+   align-self: flex-start;
+   background: #033E8C;
+   color: #fff;
+}
+
+.button__login:hover,
+.button__bloquear:hover,
+.button__checar:hover {
+   transform: translateY(-1px);
+}
+
+.button__login:hover,
+.button__checar:hover {
+   background: #012d63;
+}
+
+.button__bloquear:hover {
+   background: rgba(3, 62, 140, 0.1);
+}
+
+.status__bloqueio {
+   font-size: 14px;
+   color: #021e43;
+}
+
+.card__descricao {
+   font-size: 16px;
+   line-height: 1.5;
+}
+
+.card__lista {
+   padding-left: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   font-size: 15px;
+}
+
+.card__alerta {
+   display: none;
+   font-size: 15px;
+   background: #fff;
+   border-left: 4px solid #033E8C;
+   padding: 12px;
+   border-radius: 6px;
+}
+
+.card__alerta--visivel {
+   display: block;
+}
+
+.esqueceu__senha,
+.criar__login {
+   font-size: 14px;
    opacity: 0.8;
    color: #033E8C;
    text-decoration: none;
 }
 
-.criar__login {
-   text-align: center;
-   font-size: 12px;
-   opacity: 0.8;
-   color: #033E8C;
-   text-decoration: none;
+.esqueceu__senha:hover,
+.criar__login:hover {
+   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+   .form__login {
+      gap: 24px;
+      font-size: 16px;
+      margin: 32px auto 60px;
+   }
+
+   .card__titulo {
+      font-size: 22px;
+   }
+
+   .card {
+      padding: 24px;
+   }
 }
